@@ -334,9 +334,9 @@ describe "looking up traits that don't exist" do
       end
 
       expect { FactoryBot.build(:user) }.to raise_error(
-                                              KeyError,
-                                              'Trait not registered: "inaccessible_trait". Registered traits: []. Referenced within "user" definition'
-                                            )
+        KeyError,
+        'Trait not registered: "inaccessible_trait". Registered traits: []. Referenced within "user" definition'
+      )
     end
 
     it "maintains 'Did you mean?' suggestions at the end of the error message" do
@@ -371,9 +371,9 @@ describe "looking up traits that don't exist" do
       end
 
       expect { FactoryBot.build(:user, :admin) }.to raise_error(
-                                                      KeyError,
-                                                      'Trait not registered: "inaccessible_trait". Registered traits: [:admin]. Referenced within "admin" definition'
-                                                    )
+        KeyError,
+        'Trait not registered: "inaccessible_trait". Registered traits: [:admin]. Referenced within "admin" definition'
+      )
     end
   end
 end
