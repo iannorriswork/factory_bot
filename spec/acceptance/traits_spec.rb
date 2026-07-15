@@ -335,7 +335,7 @@ describe "looking up traits that don't exist" do
 
       expect { FactoryBot.build(:user) }.to raise_error(
         KeyError,
-        'Trait not registered: "inaccessible_trait". Registered traits: []. Referenced within "user" definition'
+        'Trait not registered: "inaccessible_trait". No registered traits. Referenced within "user" definition'
       )
     end
 
@@ -414,7 +414,7 @@ describe "trait exception error messages" do
 
         expect { FactoryBot.build(:user, :missing_trait) }.to raise_error(
           KeyError,
-          "Trait not registered: \"missing_trait\". Registered traits: [:trait_1]"
+          "Trait not registered: \"missing_trait\". Registered traits: [:trait_1]."
         )
       end
     end
@@ -430,7 +430,7 @@ describe "trait exception error messages" do
 
         expect { FactoryBot.build(:user) }.to raise_error(
           KeyError,
-          /Registered traits: \[\]/
+          /No registered traits/
         )
       end
 
@@ -441,7 +441,7 @@ describe "trait exception error messages" do
 
         expect { FactoryBot.build(:user, :missing_trait) }.to raise_error(
           KeyError,
-          "Trait not registered: \"missing_trait\". Registered traits: []"
+          "Trait not registered: \"missing_trait\". No registered traits."
         )
       end
     end
@@ -484,7 +484,7 @@ describe "trait exception error messages" do
 
         expected_message = [
           "Trait not registered: \"missing_trait\".",
-          "Registered traits: [:trait_1, :trait_2, :trait_3, :trait_4]"
+          "Registered traits: [:trait_1, :trait_2, :trait_3, :trait_4]."
         ].join(" ")
 
         expect { FactoryBot.build(:user, :missing_trait) }.to raise_error(
@@ -562,7 +562,7 @@ describe "trait exception error messages" do
         expected_message = [
           "Trait not registered: \"missing_trait\".",
           "Registered traits: [:admin_trait_1, :admin_trait_2,",
-          ":dev_trait_1, :dev_trait_2, :user_trait_1, :user_trait_2]"
+          ":dev_trait_1, :dev_trait_2, :user_trait_1, :user_trait_2]."
         ].join(" ")
 
         expect { FactoryBot.build(:dev, :missing_trait) }.to raise_error(

@@ -139,14 +139,22 @@ module FactoryBot
     def error_with_registered_traits(error)
       message = error.message.rstrip
       message += "." unless message.end_with?(".")
-      message += " Registered traits: #{all_registered_trait_names}"
+      message += " #{registered_trait_message(all_registered_trait_names)}."
       new_error = error.class.new(message, **error_options(error))
       new_error.set_backtrace(error.backtrace)
       new_error
     end
 
+    def registered_trait_message(all_registered_traits)
+      if all_registered_traits.empty?
+        "No registered traits"
+      else
+        "Registered traits: #{all_registered_traits.map(&:to_sym).sort.inspect}"
+      end
+    end
+
     def all_registered_trait_names
-      (defined_traits_names + Internal.traits.map(&:name)).uniq.map(&:to_sym).sort.inspect
+      (defined_traits_names + Internal.traits.map(&:name)).uniq
     end
 
     def error_options(error)
