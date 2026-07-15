@@ -503,6 +503,22 @@ describe "trait exception error messages" do
 
         expect { FactoryBot.build(:user, :traiz_1) }.to raise_did_you_mean_error
       end
+
+      it "errors on the first trait that is missing and reports back" do
+        FactoryBot.define do
+          factory :user do
+            trait :trait_1
+            trait :trait_2
+          end
+        end
+
+        expected_message = [
+          "Trait not registered: \"missing_trait_1\".",
+          "Registered traits: [:trait_1, :trait_2]."
+        ].join(" ")
+
+        expect { FactoryBot.build(:user, :missing_trait_1, :bs_trait) }.to raise_error(KeyError, expected_message)
+      end
     end
   end
 
