@@ -136,13 +136,6 @@ module FactoryBot
       raise error_with_definition_name(error)
     end
 
-    def registered_trait_message(all_registered_traits)
-      if all_registered_traits.empty?
-        "No registered traits"
-      else
-        "Registered traits: #{all_registered_traits.map(&:to_sym).sort.inspect}"
-      end
-    end
 
     def all_registered_trait_names
       (defined_traits_names + Internal.traits.map(&:name)).uniq
@@ -163,6 +156,13 @@ module FactoryBot
       end
     end
 
+    def registered_trait_message(all_registered_traits)
+      if all_registered_traits.empty?
+        "No registered traits"
+      else
+        "Registered traits: #{all_registered_traits.map(&:to_sym).sort.inspect}"
+      end
+    end
     # detailed_message introduced in Ruby 3.2 for cleaner integration with
     # did_you_mean. See https://bugs.ruby-lang.org/issues/18564
     if KeyError.method_defined?(:detailed_message)
