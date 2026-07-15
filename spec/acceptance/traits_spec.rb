@@ -400,9 +400,9 @@ describe "trait exception error messages" do
         ].join(" ")
 
         expect { FactoryBot.build(:user) }.to raise_error(
-                                                KeyError,
-                                                expected_message
-                                              )
+          KeyError,
+          expected_message
+        )
       end
 
       it "when a missing trait is called by the user" do
@@ -413,9 +413,9 @@ describe "trait exception error messages" do
         end
 
         expect { FactoryBot.build(:user, :missing_trait) }.to raise_error(
-                                                                KeyError,
-                                                                "Trait not registered: \"missing_trait\". Registered traits: [:trait_1]"
-                                                              )
+          KeyError,
+          "Trait not registered: \"missing_trait\". Registered traits: [:trait_1]"
+        )
       end
     end
   end
@@ -429,9 +429,9 @@ describe "trait exception error messages" do
         end
 
         expect { FactoryBot.build(:user) }.to raise_error(
-                                                KeyError,
-                                                /Registered traits: \[\]/
-                                              )
+          KeyError,
+          /Registered traits: \[\]/
+        )
       end
 
       it "when a missing trait is called by the user" do
@@ -440,9 +440,9 @@ describe "trait exception error messages" do
         end
 
         expect { FactoryBot.build(:user, :missing_trait) }.to raise_error(
-                                                                KeyError,
-                                                                "Trait not registered: \"missing_trait\". Registered traits: []"
-                                                              )
+          KeyError,
+          "Trait not registered: \"missing_trait\". Registered traits: []"
+        )
       end
     end
   end
@@ -467,9 +467,9 @@ describe "trait exception error messages" do
         ].join(" ")
 
         expect { FactoryBot.build(:user) }.to raise_error(
-                                                KeyError,
-                                                expected_message
-                                              )
+          KeyError,
+          expected_message
+        )
       end
 
       it "when a missing trait is called by the user" do
@@ -488,9 +488,9 @@ describe "trait exception error messages" do
         ].join(" ")
 
         expect { FactoryBot.build(:user, :missing_trait) }.to raise_error(
-                                                                KeyError,
-                                                                expected_message
-                                                              )
+          KeyError,
+          expected_message
+        )
       end
 
       it "when a missing trait is similar to the existing traits" do
@@ -536,9 +536,9 @@ describe "trait exception error messages" do
         ].join(" ")
 
         expect { FactoryBot.build(:dev) }.to raise_error(
-                                               KeyError,
-                                               expected_message
-                                             )
+          KeyError,
+          expected_message
+        )
       end
 
       it "when a missing trait is called by the user" do
@@ -566,9 +566,9 @@ describe "trait exception error messages" do
         ].join(" ")
 
         expect { FactoryBot.build(:dev, :missing_trait) }.to raise_error(
-                                                               KeyError,
-                                                               expected_message
-                                                             )
+          KeyError,
+          expected_message
+        )
       end
     end
   end
